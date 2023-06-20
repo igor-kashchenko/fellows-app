@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/fellows-app/static/css/main.813daa3b.css",
+    "main.js": "/fellows-app/static/js/main.03ba5fa8.js",
+    "static/media/background23x.png": "/fellows-app/static/media/background23x.ba86458a13d8ffa087ba.png",
+    "static/media/background13x.png": "/fellows-app/static/media/background13x.2a23c97b31782a83fe59.png",
+    "static/media/logo.svg": "/fellows-app/static/media/logo.162d3ee39c621bfc7d10216b547c541c.svg",
+    "static/media/1win.svg": "/fellows-app/static/media/1win.ecf917f25e5cdb078e2a4f5da8f09fb6.svg",
+    "static/media/Manrope-SemiBold.ttf": "/fellows-app/static/media/Manrope-SemiBold.310f108cc524df0e5ffc.ttf",
+    "static/media/Manrope-Medium.ttf": "/fellows-app/static/media/Manrope-Medium.08894ccb04665d1a9d53.ttf",
+    "static/media/Manrope-Regular.ttf": "/fellows-app/static/media/Manrope-Regular.a9b9e09fe6b69741f316.ttf",
+    "static/media/Manrope-Bold.ttf": "/fellows-app/static/media/Manrope-Bold.47f6d7143da9d8c0e480.ttf",
+    "static/media/Manrope-Light.ttf": "/fellows-app/static/media/Manrope-Light.2bf511c25636c7d7a4ce.ttf",
+    "static/media/slotsCity.svg": "/fellows-app/static/media/slotsCity.f5b2efd37a8582cdd8ea2f9042eed570.svg",
+    "static/media/KyivTypeSans-Bold-.ttf": "/fellows-app/static/media/KyivTypeSans-Bold-.65815a9a71a5138a2235.ttf",
+    "static/media/luckyDreams.svg": "/fellows-app/static/media/luckyDreams.413b7dd8d71e142f4880d1e527092e88.svg",
+    "static/media/Oswald-Light.ttf": "/fellows-app/static/media/Oswald-Light.0db1d0c56bdf030d9f31.ttf",
+    "static/media/Oswald-Regular.ttf": "/fellows-app/static/media/Oswald-Regular.e815068d369177121fd8.ttf",
+    "static/media/Oswald-ExtraLight.ttf": "/fellows-app/static/media/Oswald-ExtraLight.91951892dbc8636d8f73.ttf",
+    "static/media/gloryCasino.svg": "/fellows-app/static/media/gloryCasino.9a426f22cbdcf1e5e77af192b036f457.svg",
+    "static/media/dazard.svg": "/fellows-app/static/media/dazard.30f4b8f12bb956b6d0c82c37f681b58b.svg",
+    "static/media/letsGetLucky.svg": "/fellows-app/static/media/letsGetLucky.554014d08410513a890c6f435997539a.svg",
+    "static/media/pinUp.svg": "/fellows-app/static/media/pinUp.7178c47b93a8f580cc4a9f0c62976a15.svg",
+    "static/media/cosmolot.svg": "/fellows-app/static/media/cosmolot.bb7b0f266b928d7005aa975af65b117e.svg",
+    "static/media/betOnRed.svg": "/fellows-app/static/media/betOnRed.541321a4a79347bc8262e38f38cc132e.svg",
+    "static/media/cyberBet.svg": "/fellows-app/static/media/cyberBet.6e673ad92ff72d9245d47be3aef56619.svg",
+    "static/media/flamm.svg": "/fellows-app/static/media/flamm.fb8f783072753ed28c980f8b8ce24721.svg",
+    "static/media/instagram.svg": "/fellows-app/static/media/instagram.e212c8462881dd8f3bd4824153539e41.svg",
+    "static/media/parimatch.svg": "/fellows-app/static/media/parimatch.a9745d1480c8bd05e2f5b5a8473f3849.svg",
+    "static/media/telegram.svg": "/fellows-app/static/media/telegram.4bef75fde14633e3a38873d9d45bc3b2.svg",
+    "static/media/linkedin.svg": "/fellows-app/static/media/linkedin.2bf8fcc53e4e02255fc41cdf93ed7ac9.svg",
+    "index.html": "/fellows-app/index.html",
+    "static/media/facebook.svg": "/fellows-app/static/media/facebook.7b6030ed408205da5b9e7e3f826297ac.svg",
+    "static/media/contactArrow.svg": "/fellows-app/static/media/contactArrow.c19bcf11530f25c6bf1d55163bb4f94a.svg",
+    "main.813daa3b.css.map": "/fellows-app/static/css/main.813daa3b.css.map",
+    "main.03ba5fa8.js.map": "/fellows-app/static/js/main.03ba5fa8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.813daa3b.css",
+    "static/js/main.03ba5fa8.js"
+  ]
+}
