@@ -1,0 +1,20 @@
+.marquee {
+  white-space: nowrap;
+}
+
+.marquee-content {
+  position: absolute;
+  display: inline-block;
+  animation: marquee 60s linear infinite;
+}
+
+.marquee-content::before,
+.marquee-content::after {
+  content: '';
+  flex: 1;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
