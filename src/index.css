@@ -5,12 +5,6 @@ body::-webkit-scrollbar {
 body {
   -ms-overflow-style: none;
   scrollbar-width: none;
-  background-image: url('assets/images/background13x.png'),
-                    linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)),
-                    url('assets/images/background23x.png');
-  background-size: 100% 50%;
-  background-repeat: no-repeat;
-  background-position: center top, center center, center bottom;
   scroll-behavior: smooth;
   margin: 0;
   padding: 0;

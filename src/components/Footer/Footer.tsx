@@ -1,15 +1,19 @@
 import { Grid, Link, Typography, useMediaQuery, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
-import React from 'react';
+import React, { useContext } from 'react';
 import instagram from '../../assets/images/instagram.svg';
 import linkedin from '../../assets/images/linkedin.svg';
 import facebook from '../../assets/images/facebook.svg';
 import telegram from '../../assets/images/telegram.svg';
+import TranslationContext from '../../translationContext/TranslationContext';
+import { TranslationContextType } from '../../types/TranslationContextType';
 
 export const Footer: React.FC = () => {
+  const { getTranslation, currentLanguage } = useContext(TranslationContext) as TranslationContextType;
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const isDefaultLanguage = currentLanguage === 'en';
 
   const socialsLogos = [
     { id: 1, path: instagram, url: '' },
@@ -18,21 +22,7 @@ export const Footer: React.FC = () => {
     { id: 4, path: telegram, url: 'https://t.me/djan_fellow' },
   ];
 
-  const smallFooterText = [
-    'We will make your digital',
-    'side of business',
-    'attractive to your clients',
-  ];
-
-  const footerText = [
-    'We will make',
-    'your digital',
-    'side of business',
-    'attractive to',
-    'your clients',
-  ];
-
-  const textToRender = isMediumScreen ? smallFooterText : footerText;
+  const textToRender = isMediumScreen ? getTranslation('smallFooterQuote') : getTranslation('footerQuote');
 
   return (
     <Box
@@ -128,31 +118,29 @@ export const Footer: React.FC = () => {
           pr={{
             xs: 0,
             md: 12,
-            lg: 19.25,
+            lg: 14,
           }}
           pb={{
             xs: 8, md: 0,
           }}
           textAlign={{
-            xs: 'end', md: 'inherit',
+            xs: isDefaultLanguage ? 'end' : 'start', md: 'inherit',
           }}
         >
-          {textToRender.map((line, i) => (
-            <Typography
-              key={i}
-              color={'custom.text'}
-              fontWeight={700}
-              fontSize={{
-                xs: '16px',
-                md: '22px',
-                lg: '24px',
-              }}
-              letterSpacing={-0.008}
-              lineHeight={'25px'}
-            >
-              {line}
-            </Typography>
-          ))}
+          <Typography
+            color={'custom.text'}
+            fontWeight={700}
+            fontSize={{
+              xs: '16px',
+              md: '22px',
+              lg: '24px',
+            }}
+            letterSpacing={-0.008}
+            lineHeight={'25px'}
+            whiteSpace={'pre-line'}
+          >
+            {textToRender}
+          </Typography>
         </Grid>
 
         <Grid item xs={12} md={'auto'} textAlign={{

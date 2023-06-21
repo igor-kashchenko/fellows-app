@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -16,17 +16,23 @@ import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import CloseIcon from '@mui/icons-material/Close';
+import TranslationContext from '../../translationContext/TranslationContext';
+import { TranslationContextType } from '../../types/TranslationContextType';
+import { Language } from '../../types/Language';
+import { TranslationData } from '../../types/TranslationData';
 
 type Props = {
   handleNavigationClick: (link: string) => void;
 }
 
 export const Header: React.FC<Props> = ({ handleNavigationClick }) => {
+  const { changeLanguage, currentLanguage, getTranslation } = useContext(TranslationContext) as TranslationContextType;
+
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const links = ['About', 'Partners', 'Contact us'];
-  const languages = ['English', 'Українська'];
+  const links: Array<keyof TranslationData[Language]> = ['about', 'partners', 'contactUs'];
+  const languages = [{text: 'English', string: 'en'}, {text: 'Українська', string: 'укр'}];
   const [langAnchorEl, setLangAnchorEl] = useState<null | HTMLElement>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -47,6 +53,11 @@ export const Header: React.FC<Props> = ({ handleNavigationClick }) => {
     setDrawerOpen(false);
   };
 
+  const handleLanguageChange = (language: Language) => {
+    changeLanguage(language);
+    handleLangClose();
+  };
+
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
@@ -63,7 +74,6 @@ export const Header: React.FC<Props> = ({ handleNavigationClick }) => {
 
   return (
     <AppBar
-      position="sticky"
       sx={{
         backgroundColor: 'rgba(55, 38, 61, 0.01)',
         backdropFilter: 'blur(12px)',
@@ -82,7 +92,7 @@ export const Header: React.FC<Props> = ({ handleNavigationClick }) => {
             alignItems: 'center',
           }}
         >
-          <Typography variant="h2" fontSize={'40px'} fontFamily={'Oswald'} onClick={() => handleNavigationClick('Welcome')} fontWeight={300} sx={{
+          <Typography variant="h2" fontSize={'40px'} fontFamily={'Oswald'} onClick={() => handleNavigationClick('welcome')} fontWeight={300} sx={{
             cursor: 'pointer',
           }}>
             {isSmallScreen
@@ -153,9 +163,10 @@ export const Header: React.FC<Props> = ({ handleNavigationClick }) => {
                         px: 3,
                         pb: 3,
                         pt: 0,
+                        cursor: 'pointer',
                       }}
                     >
-                      {link}
+                      {getTranslation(link)}
                     </ListItem>
                   ))}
                 </List>
@@ -164,7 +175,8 @@ export const Header: React.FC<Props> = ({ handleNavigationClick }) => {
               <List sx={{ p: 0 }}>
                 {languages.map((language) => (
                   <ListItem
-                    key={language}
+                    key={language.text}
+                    onClick={() => handleLanguageChange(language.string as Language)}
                     sx={{
                       fontFamily: 'Manrope',
                       fontWeight: 400,
@@ -178,9 +190,10 @@ export const Header: React.FC<Props> = ({ handleNavigationClick }) => {
                       '&:last-child': {
                         pb: '58px',
                       },
+                      cursor: 'pointer',
                     }}
                   >
-                    {language}
+                    {language.text}
                   </ListItem>
                 ))}
               </List>
@@ -196,14 +209,14 @@ export const Header: React.FC<Props> = ({ handleNavigationClick }) => {
                 sx={{
                   fontSize: '18px',
                   mr: 7,
-                  textTransform: 'capitalize',
+                  textTransform: 'none',
                   ':hover': {
                     color: 'custom.hover',
                     backgroundColor: 'transparent',
                   },
                 }}
               >
-                {link}
+                {getTranslation(link)}
               </Button>
             ))}
 
@@ -219,7 +232,7 @@ export const Header: React.FC<Props> = ({ handleNavigationClick }) => {
             >
               <LanguageIcon sx={{ pr: 2.5 }} fontSize="large" />
 
-              <Typography fontSize={'18px'}>{'EN' || 'UA'}</Typography>
+              <Typography fontSize={'18px'} textTransform={'uppercase'}>{currentLanguage}</Typography>
             </Button>
 
             <Menu
@@ -248,8 +261,8 @@ export const Header: React.FC<Props> = ({ handleNavigationClick }) => {
             >
               {languages.map((language) => (
                 <MenuItem
-                  onClick={handleLangClose}
-                  key={language}
+                  key={language.text}
+                  onClick={() => handleLanguageChange(language.string as Language)}
                   sx={{
                     px: 1,
                     fontSize: '18px',
@@ -260,7 +273,7 @@ export const Header: React.FC<Props> = ({ handleNavigationClick }) => {
                     },
                   }}
                 >
-                  {language}
+                  {language.text}
                 </MenuItem>
               ))}
             </Menu>

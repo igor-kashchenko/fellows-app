@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import { ThemeProvider } from '@mui/material';
 import { theme } from './theme';
+import TranslationProvider from './translationContext/TranslationProvider';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,9 +12,11 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <TranslationProvider>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </TranslationProvider>
   </React.StrictMode>
 );
 

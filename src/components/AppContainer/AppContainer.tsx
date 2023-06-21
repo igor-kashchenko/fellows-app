@@ -7,7 +7,9 @@ type Props = {
 
 export const AppContainer: React.FC<Props> = ({ children }) => {
   return (
-    <Container disableGutters>
+    <Container component={'main'} disableGutters sx={{
+      scrollSnapType: 'y mandatory',
+    }}>
       {children}
     </Container>
   );

@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useContext } from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import oneWin from '../../assets/images/logos/1win.svg';
@@ -15,12 +15,16 @@ import dazard from '../../assets/images/logos/dazard.svg';
 import luckyDreams from '../../assets/images/logos/luckyDreams.svg';
 import slotsCity from '../../assets/images/logos/slotsCity.svg';
 import cyberBet from '../../assets/images/logos/cyberBet.svg';
+import { TranslationContextType } from '../../types/TranslationContextType';
+import TranslationContext from '../../translationContext/TranslationContext';
 
 type Props = {
   ref: React.RefObject<HTMLDivElement>;
 }
 
 export const PartnersBlock = forwardRef<HTMLDivElement, Props>((props, ref) => {
+  const { getTranslation } = useContext(TranslationContext) as TranslationContextType;
+
   const logos = [
     {id: 1, path: parimatch},
     {id: 2, path: oneWin},
@@ -37,7 +41,7 @@ export const PartnersBlock = forwardRef<HTMLDivElement, Props>((props, ref) => {
   ];
 
   return (
-    <Box component='section' ref={ref} sx={{height: '100vh', position: 'relative'}}>
+    <Box component='section' ref={ref} sx={{height: '100vh', position: 'relative', scrollSnapAlign: 'start',}}>
       <Grid container sx={{
         pt: {
           xs: 9,
@@ -63,7 +67,7 @@ export const PartnersBlock = forwardRef<HTMLDivElement, Props>((props, ref) => {
               xs: 8, md: 0,
             }}
           >
-            Partners
+            {getTranslation('partners')}
           </Typography>
         </Grid>
 
@@ -82,7 +86,7 @@ export const PartnersBlock = forwardRef<HTMLDivElement, Props>((props, ref) => {
               mixBlendMode:'overlay',
             }}
           >
-            We worked with
+            {getTranslation('partnersTitle')}
           </Typography>
         </Grid>
 

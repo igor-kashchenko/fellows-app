@@ -1,16 +1,22 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useContext } from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import contactArrow from '../../assets/images/contactArrow.svg';
+import { TranslationContextType } from '../../types/TranslationContextType';
+import TranslationContext from '../../translationContext/TranslationContext';
 
 type Props = {
   ref: React.RefObject<HTMLDivElement>;
+  handleNavigationClick: (link: string) => void;
 }
 
 export const AboutBlock = forwardRef<HTMLDivElement, Props>((props, ref) => {
+  const { handleNavigationClick } = props;
+  const { getTranslation } = useContext(TranslationContext) as TranslationContextType;
+
   return (
-    <Box component='section' ref={ref} sx={{height: '100vh'}}>
+    <Box component='section' ref={ref} sx={{height: '100vh', scrollSnapAlign: 'start',}}>
       <Grid
         container
         sx={{
@@ -32,14 +38,14 @@ export const AboutBlock = forwardRef<HTMLDivElement, Props>((props, ref) => {
             textTransform={'uppercase'}
             color={'custom.text'}
             fontFamily={'Oswald'}
-            fontWeight={300}
+            fontWeight={200}
             fontSize={'24px'}
             textAlign={'end'}
             pb={{
               xs: 5, md: 0,
             }}
           >
-            About
+            {getTranslation('about')}
           </Typography>
         </Grid>
 
@@ -62,7 +68,7 @@ export const AboutBlock = forwardRef<HTMLDivElement, Props>((props, ref) => {
               },
             }}
           >
-            We help businesses
+            {getTranslation('aboutTitle')}
           </Typography>
         </Grid>
 
@@ -88,7 +94,7 @@ export const AboutBlock = forwardRef<HTMLDivElement, Props>((props, ref) => {
               },
             }}
           >
-            to achieve their goals
+            {getTranslation('aboutSubTitle')}
           </Typography>
         </Grid>
 
@@ -113,19 +119,16 @@ export const AboutBlock = forwardRef<HTMLDivElement, Props>((props, ref) => {
                 md: '22px',
                 lg: '24px',
               },
+              whiteSpace: 'pre-line',
             }}
 
           >
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-            aspernatur aut odit aut fugit
+            {getTranslation('aboutText')}
           </Typography>
         </Grid>
 
         <Grid item xs={12} >
-          <Box display={'flex'} alignItems={'center'}>
+          <Box display={'flex'} alignItems={'center'} onClick={() => handleNavigationClick('contactUs')}>
             <Typography
               color={'custom.text'}
               fontWeight={400}
@@ -144,7 +147,7 @@ export const AboutBlock = forwardRef<HTMLDivElement, Props>((props, ref) => {
                 },
               }}
             >
-              Contact us
+              {getTranslation('contactUs')}
               <Box
                 component={'img'}
                 src={contactArrow}
