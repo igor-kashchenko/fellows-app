@@ -1,9 +1,13 @@
 {
   "files": {
-    "main.css": "/fellows-app/static/css/main.813daa3b.css",
-    "main.js": "/fellows-app/static/js/main.03ba5fa8.js",
-    "static/media/background23x.png": "/fellows-app/static/media/background23x.ba86458a13d8ffa087ba.png",
-    "static/media/background13x.png": "/fellows-app/static/media/background13x.2a23c97b31782a83fe59.png",
+    "main.css": "/fellows-app/static/css/main.2a3c8ea2.css",
+    "main.js": "/fellows-app/static/js/main.a778c37a.js",
+    "static/media/background23xlg.png": "/fellows-app/static/media/background23xlg.ba86458a13d8ffa087ba.png",
+    "static/media/background13xlg.png": "/fellows-app/static/media/background13xlg.2a23c97b31782a83fe59.png",
+    "static/media/background23xmd.png": "/fellows-app/static/media/background23xmd.809a7d6c932e4ef91a91.png",
+    "static/media/background13xmd.png": "/fellows-app/static/media/background13xmd.0508635abb5abbdfa78a.png",
+    "static/media/background23xxs.png": "/fellows-app/static/media/background23xxs.a5fd01ad7e4bcd16063f.png",
+    "static/media/background13xxs.png": "/fellows-app/static/media/background13xxs.502a96278c030ea2684c.png",
     "static/media/logo.svg": "/fellows-app/static/media/logo.162d3ee39c621bfc7d10216b547c541c.svg",
     "static/media/1win.svg": "/fellows-app/static/media/1win.ecf917f25e5cdb078e2a4f5da8f09fb6.svg",
     "static/media/Manrope-SemiBold.ttf": "/fellows-app/static/media/Manrope-SemiBold.310f108cc524df0e5ffc.ttf",
@@ -32,11 +36,11 @@
     "index.html": "/fellows-app/index.html",
     "static/media/facebook.svg": "/fellows-app/static/media/facebook.7b6030ed408205da5b9e7e3f826297ac.svg",
     "static/media/contactArrow.svg": "/fellows-app/static/media/contactArrow.c19bcf11530f25c6bf1d55163bb4f94a.svg",
-    "main.813daa3b.css.map": "/fellows-app/static/css/main.813daa3b.css.map",
-    "main.03ba5fa8.js.map": "/fellows-app/static/js/main.03ba5fa8.js.map"
+    "main.2a3c8ea2.css.map": "/fellows-app/static/css/main.2a3c8ea2.css.map",
+    "main.a778c37a.js.map": "/fellows-app/static/js/main.a778c37a.js.map"
   },
   "entrypoints": [
-    "static/css/main.813daa3b.css",
-    "static/js/main.03ba5fa8.js"
+    "static/css/main.2a3c8ea2.css",
+    "static/js/main.a778c37a.js"
   ]
 }
