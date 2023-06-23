@@ -188,6 +188,7 @@ export const ContactUsBlock = forwardRef<HTMLDivElement, Props>(
         <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleSnackbarClose} anchorOrigin={{ vertical:'top', horizontal: 'right' }} TransitionComponent={SlideTransition} sx={{
           mt: {
             xs: 0,
+            md: 7,
             lg: 9,
           }
         }}>
