@@ -22,5 +22,7 @@ export type TranslationData = {
     emailError: string;
     phoneError: string;
     messageError: string;
+    toastSuccess: string;
+    toastError: string;
   };
 };

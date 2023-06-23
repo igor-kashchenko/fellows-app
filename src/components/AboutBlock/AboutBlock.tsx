@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import contactArrow from '../../assets/images/contactArrow.svg';
 import { TranslationContextType } from '../../types/TranslationContextType';
 import TranslationContext from '../../translationContext/TranslationContext';
+import Button from '@mui/material/Button';
 
 type Props = {
   ref: React.RefObject<HTMLDivElement>;
@@ -66,6 +67,10 @@ export const AboutBlock = forwardRef<HTMLDivElement, Props>((props, ref) => {
                 md: -4,
                 lg: -14,
               },
+              '@media (min-width: 1200px) and (max-width: 1440px)': {
+                fontSize: '100px',
+                ml: 2,
+              },
             }}
           >
             {getTranslation('aboutTitle')}
@@ -100,8 +105,9 @@ export const AboutBlock = forwardRef<HTMLDivElement, Props>((props, ref) => {
 
         <Grid
           item
-          xs={12}
-          md={6}
+          xs={9}
+          sm={10}
+          md={8}
           lg={6}
           container
           pb={{
@@ -111,17 +117,28 @@ export const AboutBlock = forwardRef<HTMLDivElement, Props>((props, ref) => {
           <Typography
             color={'custom.text'}
             fontWeight={500}
-            letterSpacing={-0.016}
-            lineHeight={'41px'}
+            letterSpacing={{
+              xs: '-0.288px',
+              md: '-0.352px',
+              lg: '-0.384px',
+            }}
+            lineHeight={{
+              xs: '23px',
+              md: '38px',
+              lg: '41px',
+            }}
             sx={{
               fontSize: {
-                xs: '18px',
+                xs: '16px',
+                sm: '18px',
                 md: '22px',
                 lg: '24px',
               },
-              whiteSpace: 'pre-line',
+              whiteSpace: {
+                xs: 'none',
+                sm: 'pre-line',
+              }
             }}
-
           >
             {getTranslation('aboutText')}
           </Typography>
@@ -129,32 +146,32 @@ export const AboutBlock = forwardRef<HTMLDivElement, Props>((props, ref) => {
 
         <Grid item xs={12} >
           <Box display={'flex'} alignItems={'center'} onClick={() => handleNavigationClick('contactUs')}>
-            <Typography
-              color={'custom.text'}
-              fontWeight={400}
-              fontFamily={'Manrope'}
-              fontSize={'24px'}
-              lineHeight={'32px'}
-              position={'relative'}
-              px={2.5}
-              sx={{
-                border: '1px solid transparent',
-                borderRadius: '8px 3px 8px 8px',
-                cursor: 'pointer',
-                transition: 'border-color 0.3s linear',
-                ':hover': {
-                  borderColor: '#fff',
-                },
-              }}
-            >
+            <Button sx={{
+              color: 'custom.text',
+              fontWeight: 400,
+              fontSize: '24px',
+              lineHeight: '32px',
+              position: 'relative',
+              border: '1px solid transparent',
+              borderRadius: '8px 3px 8px 8px',
+              cursor: 'pointer',
+              transition: 'border-color 0.3s linear',
+              px: 2.5,
+              py: 0,
+              textTransform: 'none',
+              ':hover': {
+                borderColor: '#fff',
+                background: 'transparent',
+              }
+            }}>
               {getTranslation('contactUs')}
               <Box
                 component={'img'}
                 src={contactArrow}
-                alt="arrow logo"
-                sx={{ position: 'absolute', top: 2, right: 2 }}
+                alt='arrow logo'
+                sx={{ position: 'absolute', top: 2, right: 2}}
               />
-            </Typography>
+            </Button>
           </Box>
         </Grid>
       </Grid>

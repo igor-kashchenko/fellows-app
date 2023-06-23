@@ -9,8 +9,12 @@ const translations = {
     aboutTitle: 'We help businesses',
     aboutSubTitle: 'to achieve their goals',
     aboutText:
-      `Fellow’s - agency is a media buying agency with 5 years of experience in traffic arbitrage and affiliate marketing.
-       Our team works individually with each client, finding the best promotion tools and planning a long-term marketing strategy.`,
+      `Fellow’s - is a media buying agency
+       with 5 years of experience in traffic arbitrage
+       and affiliate marketing.
+       Our team works individually with each client,
+       finding the best promotion tools and planning
+       a long-term marketing strategy.`,
     partnersTitle: 'We worked with',
     fullName: 'Full Name',
     email: 'Email',
@@ -31,6 +35,8 @@ const translations = {
     emailError: 'Enter a valid email',
     phoneError: 'Enter a valid phone number without letters',
     messageError: 'Enter a valid message',
+    toastError: 'Error! Try again later!',
+    toastSuccess: 'Form submitted successfully!'
   },
 
   укр: {
@@ -45,12 +51,13 @@ const translations = {
     aboutText:
       `Fellow’s – медіабаїнгова агенція з 5-річним досвідом роботи в арбітражі трафіку і партнерському маркетингу.
       Наша команда працює індивідуально з кожним клієнтом, обираючи оптимальні інструменти просування і плануючи довгострокову стратегію реклами.`,
-    partnersTitle: 'Ми працюємо з',
+    partnersTitle: `Ми
+    працюємо з`,
     sendButton: 'Відправити',
     fullName: 'Повне ім\'я',
     email: 'Пошта',
     phone: 'Телефон',
-    message: 'Опишіть вашу задачу, щоб ми...',
+    message: 'Опишіть вашу задачу',
     footerQuote:
     `Ми зробимо
     цифрову сторону
@@ -66,6 +73,8 @@ const translations = {
     emailError: 'Введіть правильно електронну адресу',
     phoneError: 'Введіть правильний номер телефону без літер',
     messageError: 'Введіть правильно повідомлення',
+    toastError: 'Помилка! Спробуйте пізніше ще раз!',
+    toastSuccess: 'Ваші дані успішно відправлені!',
   },
 };
 

@@ -9,7 +9,6 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import LanguageIcon from '@mui/icons-material/Language';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Drawer from '@mui/material/Drawer';
@@ -20,19 +19,41 @@ import TranslationContext from '../../translationContext/TranslationContext';
 import { TranslationContextType } from '../../types/TranslationContextType';
 import { Language } from '../../types/Language';
 import { TranslationData } from '../../types/TranslationData';
+import { SvgIcon, SvgIconProps } from '@mui/material';
+
+const LanguageIcon: React.FC<SvgIconProps> = (props) => {
+  return (
+    <SvgIcon {...props} viewBox="0 0 16 16">
+      <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855c-.143.268-.276.56-.395.872c.705.157 1.472.257 2.282.287V1.077zM4.249 3.539c.142-.384.304-.744.481-1.078a6.7 6.7 0 0 1 .597-.933A7.01 7.01 0 0 0 3.051 3.05c.362.184.763.349 1.198.49zM3.509 7.5c.036-1.07.188-2.087.436-3.008a9.124 9.124 0 0 1-1.565-.667A6.964 6.964 0 0 0 1.018 7.5h2.49zm1.4-2.741a12.344 12.344 0 0 0-.4 2.741H7.5V5.091c-.91-.03-1.783-.145-2.591-.332zM8.5 5.09V7.5h2.99a12.342 12.342 0 0 0-.399-2.741c-.808.187-1.681.301-2.591.332zM4.51 8.5c.035.987.176 1.914.399 2.741A13.612 13.612 0 0 1 7.5 10.91V8.5H4.51zm3.99 0v2.409c.91.03 1.783.145 2.591.332c.223-.827.364-1.754.4-2.741H8.5zm-3.282 3.696c.12.312.252.604.395.872c.552 1.035 1.218 1.65 1.887 1.855V11.91c-.81.03-1.577.13-2.282.287zm.11 2.276a6.696 6.696 0 0 1-.598-.933a8.853 8.853 0 0 1-.481-1.079a8.38 8.38 0 0 0-1.198.49a7.01 7.01 0 0 0 2.276 1.522zm-1.383-2.964A13.36 13.36 0 0 1 3.508 8.5h-2.49a6.963 6.963 0 0 0 1.362 3.675c.47-.258.995-.482 1.565-.667zm6.728 2.964a7.009 7.009 0 0 0 2.275-1.521a8.376 8.376 0 0 0-1.197-.49a8.853 8.853 0 0 1-.481 1.078a6.688 6.688 0 0 1-.597.933zM8.5 11.909v3.014c.67-.204 1.335-.82 1.887-1.855c.143-.268.276-.56.395-.872A12.63 12.63 0 0 0 8.5 11.91zm3.555-.401c.57.185 1.095.409 1.565.667A6.963 6.963 0 0 0 14.982 8.5h-2.49a13.36 13.36 0 0 1-.437 3.008zM14.982 7.5a6.963 6.963 0 0 0-1.362-3.675c-.47.258-.995.482-1.565.667c.248.92.4 1.938.437 3.008h2.49zM11.27 2.461c.177.334.339.694.482 1.078a8.368 8.368 0 0 0 1.196-.49a7.01 7.01 0 0 0-2.275-1.52c.218.283.418.597.597.932zm-.488 1.343a7.765 7.765 0 0 0-.395-.872C9.835 1.897 9.17 1.282 8.5 1.077V4.09c.81-.03 1.577-.13 2.282-.287z"/>
+    </SvgIcon>
+  );
+};
+
+export default LanguageIcon;
 
 type Props = {
   handleNavigationClick: (link: string) => void;
-}
+};
 
 export const Header: React.FC<Props> = ({ handleNavigationClick }) => {
-  const { changeLanguage, currentLanguage, getTranslation } = useContext(TranslationContext) as TranslationContextType;
+  const { changeLanguage, currentLanguage, getTranslation } = useContext(
+    TranslationContext
+  ) as TranslationContextType;
 
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const links: Array<keyof TranslationData[Language]> = ['about', 'partners', 'contactUs'];
-  const languages = [{text: 'English', string: 'en'}, {text: 'Українська', string: 'укр'}];
+  const isUkranian = currentLanguage === 'укр';
+
+  const links: Array<keyof TranslationData[Language]> = [
+    'about',
+    'partners',
+    'contactUs',
+  ];
+  const languages = [
+    { text: 'English', string: 'en' },
+    { text: 'Українська', string: 'укр' },
+  ];
   const [langAnchorEl, setLangAnchorEl] = useState<null | HTMLElement>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -79,9 +100,12 @@ export const Header: React.FC<Props> = ({ handleNavigationClick }) => {
         backdropFilter: 'blur(12px)',
         py: 1,
         px: {
-          xs: 3, sm: 4, lg: 0,
-        }
+          xs: 3,
+          sm: 4,
+          lg: 0,
+        },
       }}
+      elevation={0}
     >
       <Container disableGutters>
         <Toolbar
@@ -92,15 +116,22 @@ export const Header: React.FC<Props> = ({ handleNavigationClick }) => {
             alignItems: 'center',
           }}
         >
-          <Typography variant="h2" fontSize={'40px'} fontFamily={'Oswald'} onClick={() => handleNavigationClick('welcome')} fontWeight={300} sx={{
-            cursor: 'pointer',
-          }}>
+          <Typography
+            variant="h2"
+            fontSize={'40px'}
+            fontFamily={'Oswald'}
+            onClick={() => handleNavigationClick('welcome')}
+            fontWeight={300}
+            sx={{
+              cursor: 'pointer',
+            }}
+          >
             {isSmallScreen
               ? 'Fellow\'s'.toUpperCase()
               : 'We are Fellow\'s'.toUpperCase()}
           </Typography>
 
-          <Box display={{ xs: 'block', md: 'none'}}>
+          <Box display={{ xs: 'block', md: 'none' }}>
             <IconButton
               edge="end"
               aria-label="menu"
@@ -115,7 +146,7 @@ export const Header: React.FC<Props> = ({ handleNavigationClick }) => {
               anchor="right"
               open={drawerOpen}
               onClose={handleDrawerClose}
-              transitionDuration={{enter: 500, exit: 200}}
+              transitionDuration={{ enter: 500, exit: 200 }}
               PaperProps={{
                 sx: {
                   background: 'rgba(55, 38, 61, 0.01)',
@@ -129,14 +160,15 @@ export const Header: React.FC<Props> = ({ handleNavigationClick }) => {
             >
               <Box>
                 <Box
-                  height={{ xs: '72px', sm: '80px'}}
+                  height={{ xs: '72px', sm: '80px' }}
                   display={'flex'}
                   alignItems={'center'}
                   justifyContent={'flex-end'}
                   sx={{
                     px: {
-                      xs: 3, sm: 4,
-                    }
+                      xs: 3,
+                      sm: 4,
+                    },
                   }}
                 >
                   <CloseIcon
@@ -176,7 +208,11 @@ export const Header: React.FC<Props> = ({ handleNavigationClick }) => {
                 {languages.map((language) => (
                   <ListItem
                     key={language.text}
-                    onClick={() => handleLanguageChange(language.string as Language)}
+                    onClick={() =>
+                    { handleLanguageChange(language.string as Language);
+                      handleNavigationClickMobile('welcome');
+                    }
+                    }
                     sx={{
                       fontFamily: 'Manrope',
                       fontWeight: 400,
@@ -208,7 +244,7 @@ export const Header: React.FC<Props> = ({ handleNavigationClick }) => {
                 onClick={() => handleNavigation(link)}
                 sx={{
                   fontSize: '18px',
-                  mr: 7,
+                  mr: isUkranian ? 5 : 7,
                   textTransform: 'none',
                   ':hover': {
                     color: 'custom.hover',
@@ -227,12 +263,17 @@ export const Header: React.FC<Props> = ({ handleNavigationClick }) => {
                 ':hover': {
                   color: 'custom.hover',
                   backgroundColor: 'transparent',
+                  '& .MuiSvgIcon-root': {
+                    fill: '#7417FE',
+                  },
                 },
               }}
             >
-              <LanguageIcon sx={{ pr: 2.5 }} fontSize="large" />
+              <LanguageIcon sx={{ pr: 2.5, fill: '#FFF'}}/>
 
-              <Typography fontSize={'18px'} textTransform={'uppercase'}>{currentLanguage}</Typography>
+              <Typography fontSize={'18px'} textTransform={'uppercase'}>
+                {currentLanguage}
+              </Typography>
             </Button>
 
             <Menu
@@ -262,7 +303,9 @@ export const Header: React.FC<Props> = ({ handleNavigationClick }) => {
               {languages.map((language) => (
                 <MenuItem
                   key={language.text}
-                  onClick={() => handleLanguageChange(language.string as Language)}
+                  onClick={() =>
+                    handleLanguageChange(language.string as Language)
+                  }
                   sx={{
                     px: 1,
                     fontSize: '18px',

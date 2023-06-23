@@ -9,11 +9,10 @@ import TranslationContext from '../../translationContext/TranslationContext';
 import { TranslationContextType } from '../../types/TranslationContextType';
 
 export const Footer: React.FC = () => {
-  const { getTranslation, currentLanguage } = useContext(TranslationContext) as TranslationContextType;
+  const { getTranslation } = useContext(TranslationContext) as TranslationContextType;
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'));
-  const isDefaultLanguage = currentLanguage === 'en';
 
   const socialsLogos = [
     { id: 1, path: instagram, url: '' },
@@ -28,7 +27,6 @@ export const Footer: React.FC = () => {
     <Box
       component={'footer'}
       sx={{
-        background: '#000',
         borderTop: '4px solid transparent',
         borderImage:
           'linear-gradient(270deg, #D60FDA 0%, #731396 36.46%, #26155D 69.79%, #4616E0 100%) 1',
@@ -36,6 +34,7 @@ export const Footer: React.FC = () => {
     >
       <Grid
         container
+        justifyContent={'space-between'}
         maxWidth={'1200px'}
         sx={{
           margin: 'auto',
@@ -51,11 +50,6 @@ export const Footer: React.FC = () => {
         }}
       >
         <Grid
-          pr={{
-            xs: 8,
-            md: 17,
-            lg: 19.25,
-          }}
           pt={{
             xs: 0,
             md: 2,
@@ -70,7 +64,7 @@ export const Footer: React.FC = () => {
               md: '40px',
             }}
             textTransform={'uppercase'}
-            mb={2}
+            mb={1.6}
           >
             {isSmallScreen ? 'Fellow\'s' : 'We are Fellow\'s'}
           </Typography>
@@ -114,28 +108,20 @@ export const Footer: React.FC = () => {
 
         <Grid
           item
-          xs
-          pr={{
-            xs: 0,
-            md: 12,
-            lg: 14,
-          }}
           pb={{
             xs: 8, md: 0,
-          }}
-          textAlign={{
-            xs: isDefaultLanguage ? 'end' : 'start', md: 'inherit',
           }}
         >
           <Typography
             color={'custom.text'}
             fontWeight={700}
             fontSize={{
-              xs: '16px',
+              xs: '14px',
+              sm: '16px',
               md: '22px',
               lg: '24px',
             }}
-            letterSpacing={-0.008}
+            letterSpacing={'-0.192px'}
             lineHeight={'25px'}
             whiteSpace={'pre-line'}
           >
@@ -143,7 +129,7 @@ export const Footer: React.FC = () => {
           </Typography>
         </Grid>
 
-        <Grid item xs={12} md={'auto'} textAlign={{
+        <Grid xs={12} md={'auto'} item textAlign={{
           xs: 'center', md: 'initial',
         }}>
           <Typography
@@ -184,7 +170,7 @@ export const Footer: React.FC = () => {
           </Typography>
           <Typography
             color={'custom.text'}
-            fontSize={'16px'}
+            fontSize={'14px'}
             letterSpacing={-0.005}
             sx={{
               opacity: 0.5,

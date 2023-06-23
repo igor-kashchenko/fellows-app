@@ -3,6 +3,7 @@ body::-webkit-scrollbar {
 }
 
 body {
+  background-color: #000;
   -ms-overflow-style: none;
   scrollbar-width: none;
   scroll-behavior: smooth;

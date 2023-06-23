@@ -6,6 +6,7 @@ import brandLogo from '../../assets/images/logo.svg';
 import contactArrow from '../../assets/images/contactArrow.svg';
 import TranslationContext from '../../translationContext/TranslationContext';
 import { TranslationContextType } from '../../types/TranslationContextType';
+import Button from '@mui/material/Button';
 
 type Props = {
   ref: React.RefObject<HTMLDivElement>;
@@ -27,7 +28,10 @@ export const WelcomeBlock = forwardRef<HTMLDivElement, Props>((props, ref) => {
       }}>
         <Grid item xs={12} container justifyContent={'center'} pb={{
           xs: 8, md: 15.5, lg: 13.75,
-        }} pt={13.75}>
+        }} pt={{
+          xs: 4,
+          md: 13.75,
+        }}>
           <Box component={'img'} width={{
             xs: '290px', md: '356px', lg: '416px'
           }} height={{
@@ -50,15 +54,24 @@ export const WelcomeBlock = forwardRef<HTMLDivElement, Props>((props, ref) => {
             </Typography>
           </Grid>
 
-          <Grid item xs={12} sm={12} md={4} lg={4} alignContent={'center'}>
-            <Box display={'flex'} alignItems={'center'} justifyContent={'center'} onClick={() => handleNavigationClick('contactUs')}>
-              <Typography color={'custom.text'} fontWeight={400} fontSize={'24px'} lineHeight={'32px'} position={'relative'} px={2.5} sx={{
+          <Grid item xs={12} sm={12} md={4} lg={4} container justifyContent={'center'} alignItems={'end'}>
+            <Box display={'flex'} justifyContent={'center'} onClick={() => handleNavigationClick('contactUs')} pb={0.7}>
+              <Button sx={{
+                color: 'custom.text',
+                fontWeight: 400,
+                fontSize: '24px',
+                lineHeight: '32px',
+                position: 'relative',
                 border: '1px solid transparent',
                 borderRadius: '8px 3px 8px 8px',
                 cursor: 'pointer',
                 transition: 'border-color 0.3s linear',
+                px: 2.5,
+                py: 0,
+                textTransform: 'none',
                 ':hover': {
                   borderColor: '#fff',
+                  background: 'transparent',
                 }
               }}>
                 {getTranslation('contactUs')}
@@ -68,7 +81,7 @@ export const WelcomeBlock = forwardRef<HTMLDivElement, Props>((props, ref) => {
                   alt='arrow logo'
                   sx={{ position: 'absolute', top: 2, right: 2}}
                 />
-              </Typography>
+              </Button>
             </Box>
           </Grid>
         </Grid>

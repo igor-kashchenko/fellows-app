@@ -16,6 +16,10 @@ import TranslationContext from '../../translationContext/TranslationContext';
 import { FormErrors } from '../../types/FormError';
 import { useValidation } from '../../hooks/validateField';
 import { sendMessage } from '../../utils/sendMessageToBot';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+import Slide, { SlideProps } from '@mui/material/Slide';
+
 
 const WhiteTextField = styled(TextField)(() => ({
   '& .MuiOutlinedInput-root': {
@@ -38,8 +42,16 @@ const WhiteTextField = styled(TextField)(() => ({
   },
   '& .MuiInputBase-input': {
     color: '#fff',
+    '&:-webkit-autofill': {
+      '-webkit-box-shadow': '0 0 0 1000px black inset',
+      '-webkit-text-fill-color': '#fff',
+    },
   },
 }));
+
+const SlideTransition = (props: SlideProps) => {
+  return <Slide {...props} direction="left" />;
+};
 
 type Props = {
   ref: React.RefObject<HTMLDivElement>;
@@ -64,37 +76,59 @@ export const ContactUsBlock = forwardRef<HTMLDivElement, Props>(
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
 
+    const [openSnackbar, setOpenSnackbar] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState('');
+
+    const handleSnackbarClose = () => {
+      setOpenSnackbar(false);
+    };
+
     const { getTranslation } = useContext(
       TranslationContext
     ) as TranslationContextType;
     const { shouldInputFocus } = props;
 
     const handleInputChange =
-      (fieldName: keyof FormErrors) =>
-        (event: React.ChangeEvent<HTMLInputElement>) => {
-          const value = event.target.value;
+  (fieldName: keyof FormErrors) =>
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const value = event.target.value;
 
-          switch (fieldName) {
-          case 'fullname':
-            setFullName(value);
-            break;
-          case 'phone':
-            setPhone(value);
-            break;
-          case 'email':
-            setEmail(value);
-            break;
-          case 'message':
-            setMessage(value);
-            break;
-          }
-          const error = validateField(fieldName, value);
+      switch (fieldName) {
+      case 'fullname':
+        setFullName(value);
+        break;
+      case 'phone':
+        setPhone(value);
+        break;
+      case 'email':
+        setEmail(value);
+        break;
+      case 'message':
+        setMessage(value);
+        break;
+      default:
+        break;
+      }
 
-          setFormErrors((prevErrors) => ({
-            ...prevErrors,
-            [fieldName]: error,
-          }));
-        };
+      const error = validateField(fieldName, value);
+
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        [fieldName]: error,
+      }));
+    };
+
+    const handleBlur = (fieldName: keyof FormErrors) => (
+      event: React.FocusEvent<HTMLInputElement>
+    ) => {
+      const value = event.target.value;
+      const error = validateField(fieldName, value);
+
+      setFormErrors((prevErrors) => ({
+        ...prevErrors,
+        [fieldName]: error,
+      }));
+    };
 
     const hasErrors = Object.values(formErrors).some(
       (errorMessage) => errorMessage !== null
@@ -114,6 +148,10 @@ export const ContactUsBlock = forwardRef<HTMLDivElement, Props>(
       }
     }, [shouldInputFocus]);
 
+    const result = '';
+
+    const resultMessage = result ? getTranslation('toastSuccess') : getTranslation('toastError');
+
     const handleSendMessage = async (event: FormEvent) => {
       event.preventDefault();
 
@@ -121,26 +159,43 @@ export const ContactUsBlock = forwardRef<HTMLDivElement, Props>(
         return;
       }
 
-      const formattedMessage = `${fullName}\n\n${email}\n\n${phone}\n\n${message}`.trim();
+      // const formattedMessage = `${fullName}\n\n${email}\n\n${phone}\n\n${message}`.trim();
 
-      const result = await sendMessage(formattedMessage);
+      // const result = await sendMessage(formattedMessage);
 
-      setFullName('');
-      setEmail('');
-      setPhone('');
-      setMessage('');
+      // setFullName('');
+      // setEmail('');
+      // setPhone('');
+      // setMessage('');
 
-      console.log(result);
+      // console.log(result);
+
+
+      setOpenSnackbar(true);
+      setSnackbarMessage(resultMessage);
     };
-
 
     return (
       <Box
         ref={ref}
         component="section"
+        mb={{
+          xs: 10,
+          md: 0,
+        }}
         sx={{ height: '100vh' }}
-        bgcolor={'#000'}
       >
+        <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleSnackbarClose} anchorOrigin={{ vertical:'top', horizontal: 'right' }} TransitionComponent={SlideTransition} sx={{
+          mt: {
+            xs: 0,
+            lg: 9,
+          }
+        }}>
+          <Alert onClose={handleSnackbarClose} severity={result ? 'success' : 'error'} variant='filled'>
+            {snackbarMessage}
+          </Alert>
+        </Snackbar>
+
         <Grid
           container
           maxWidth={'1200px'}
@@ -158,10 +213,16 @@ export const ContactUsBlock = forwardRef<HTMLDivElement, Props>(
             },
           }}
         >
-          <Grid item xs={12} textAlign={'center'} pt={5} mb={3}>
+          <Grid item xs={12} textAlign={'center'} pt={{
+            xs: 2,
+            md: 5,
+          }} mb={3}>
             <Typography
               color={'custom.text'}
-              fontSize={'40px'}
+              fontSize={{
+                xs: '34px',
+                sm: '40px',
+              }}
               fontWeight={700}
             >
               {getTranslation('contactUs')}
@@ -184,6 +245,7 @@ export const ContactUsBlock = forwardRef<HTMLDivElement, Props>(
                 onChange={handleInputChange('fullname')}
                 error={Boolean(formErrors.fullname)}
                 helperText={formErrors.fullname}
+                onBlur={handleBlur('fullname')}
               />
             </Grid>
 
@@ -198,6 +260,7 @@ export const ContactUsBlock = forwardRef<HTMLDivElement, Props>(
                 onChange={handleInputChange('phone')}
                 error={Boolean(formErrors.phone)}
                 helperText={formErrors.phone}
+                onBlur={handleBlur('phone')}
               />
             </Grid>
 
@@ -212,10 +275,14 @@ export const ContactUsBlock = forwardRef<HTMLDivElement, Props>(
                 onChange={handleInputChange('email')}
                 error={Boolean(formErrors.email)}
                 helperText={formErrors.email}
+                onBlur={handleBlur('email')}
               />
             </Grid>
 
-            <Grid item xs={12} mb={5}>
+            <Grid item xs={12} mb={{
+              xs: 3,
+              sm: 5,
+            }}>
               <WhiteTextField
                 multiline
                 rows={4}
@@ -229,6 +296,7 @@ export const ContactUsBlock = forwardRef<HTMLDivElement, Props>(
                 onChange={handleInputChange('message')}
                 error={Boolean(formErrors.message)}
                 helperText={formErrors.message}
+                onBlur={handleBlur('message')}
               />
             </Grid>
 

@@ -84,6 +84,7 @@ export const PartnersBlock = forwardRef<HTMLDivElement, Props>((props, ref) => {
                 lg: '100px',
               },
               mixBlendMode:'overlay',
+              whiteSpace: 'pre-line',
             }}
           >
             {getTranslation('partnersTitle')}
