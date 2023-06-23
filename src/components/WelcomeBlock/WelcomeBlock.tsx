@@ -27,10 +27,10 @@ export const WelcomeBlock = forwardRef<HTMLDivElement, Props>((props, ref) => {
         px: {xs:3, sm: 4, lg: 0},
       }}>
         <Grid item xs={12} container justifyContent={'center'} pb={{
-          xs: 8, md: 15.5, lg: 13.75,
+          xs: 8, md: 10, lg: 13.75,
         }} pt={{
           xs: 4,
-          md: 13.75,
+          md: 10,
         }}>
           <Box component={'img'} width={{
             xs: '290px', md: '356px', lg: '416px'
