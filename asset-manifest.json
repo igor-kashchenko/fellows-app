@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/fellows-app/static/css/main.5a2dd604.css",
-    "main.js": "/fellows-app/static/js/main.7304407a.js",
+    "main.js": "/fellows-app/static/js/main.2e8c654d.js",
     "static/media/background23xlg.png": "/fellows-app/static/media/background23xlg.ba86458a13d8ffa087ba.png",
     "static/media/background13xlg.png": "/fellows-app/static/media/background13xlg.2a23c97b31782a83fe59.png",
     "static/media/background23xmd.png": "/fellows-app/static/media/background23xmd.6d75c520a17e531f7c52.png",
@@ -37,10 +37,10 @@
     "static/media/facebook.svg": "/fellows-app/static/media/facebook.7b6030ed408205da5b9e7e3f826297ac.svg",
     "static/media/contactArrow.svg": "/fellows-app/static/media/contactArrow.c19bcf11530f25c6bf1d55163bb4f94a.svg",
     "main.5a2dd604.css.map": "/fellows-app/static/css/main.5a2dd604.css.map",
-    "main.7304407a.js.map": "/fellows-app/static/js/main.7304407a.js.map"
+    "main.2e8c654d.js.map": "/fellows-app/static/js/main.2e8c654d.js.map"
   },
   "entrypoints": [
     "static/css/main.5a2dd604.css",
-    "static/js/main.7304407a.js"
+    "static/js/main.2e8c654d.js"
   ]
 }
