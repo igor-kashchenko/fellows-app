@@ -7,12 +7,12 @@ import { PartnersBlock } from './components/PartnersBlock';
 import { ContactUsBlock } from './components/ContactUsBlock';
 import { Footer } from './components/Footer';
 import Box from '@mui/material/Box';
-import background1lg from './assets/images/background13xlg.png';
-import background2lg from './assets/images/background23xlg.png';
-import background1md from './assets/images/background13xmd.png';
-import background2md from './assets/images/background23xmd.png';
-import background1xs from './assets/images/background13xxs.png';
-import background2xs from './assets/images/background23xxs.png';
+import background1lg from './assets/images/background13xlg.webp';
+import background2lg from './assets/images/background23xlg.webp';
+import background1md from './assets/images/background13xmd.webp';
+import background2md from './assets/images/background23xmd.webp';
+import background1xs from './assets/images/background13xxs.webp';
+import background2xs from './assets/images/background23xxs.webp';
 
 const App: React.FC = () => {
   const [shouldFirstInputFocus, setShouldFirstInputFocus] = useState(false);
@@ -59,7 +59,6 @@ const App: React.FC = () => {
 
       <Box
         sx={{
-          overflowX: 'hidden',
           backgroundImage: {
             xs: `url(${background1xs}), linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)), url(${background2xs})`,
             md: `url(${background1md}), linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)), url(${background2md})`,
@@ -68,12 +67,19 @@ const App: React.FC = () => {
           backgroundSize: '100% 50%',
           backgroundRepeat: 'no-repeat',
           backgroundPosition: 'center top, center center, center bottom',
+          overflowX: 'hidden',
         }}
       >
         <AppContainer>
-          <WelcomeBlock ref={welcomeRef} handleNavigationClick={handleNavigationClick}/>
+          <WelcomeBlock
+            ref={welcomeRef}
+            handleNavigationClick={handleNavigationClick}
+          />
 
-          <AboutBlock ref={aboutRef} handleNavigationClick={handleNavigationClick}/>
+          <AboutBlock
+            ref={aboutRef}
+            handleNavigationClick={handleNavigationClick}
+          />
 
           <PartnersBlock ref={partnersRef} />
         </AppContainer>

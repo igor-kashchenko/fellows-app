@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
+import TranslationProvider from './translationContext/TranslationProvider';
 import { ThemeProvider } from '@mui/material';
 import { theme } from './theme';
-import TranslationProvider from './translationContext/TranslationProvider';
+import './index.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

@@ -22,8 +22,8 @@ body {
 
 @font-face {
   font-family: 'Manrope';
-  src: url('./assets/fonts/Manrope/Manrope-Bold.ttf');
-  font-weight: bold;
+  src: url('./assets/fonts/Manrope/Manrope-Light.ttf');
+  font-weight: 400;
 }
 
 @font-face {
@@ -37,11 +37,7 @@ body {
   src: url('./assets/fonts/Manrope/Manrope-Medium.ttf');
   font-weight: 600;
 }
-@font-face {
-  font-family: 'Manrope';
-  src: url('./assets/fonts/Manrope/Manrope-Light.ttf');
-  font-weight: 400;
-}
+
 @font-face {
   font-family: 'Manrope';
   src: url('./assets/fonts/Manrope/Manrope-SemiBold.ttf');
@@ -49,9 +45,9 @@ body {
 }
 
 @font-face {
-  font-family: 'Oswald';
-  src: url('./assets//fonts//Oswald/Oswald-Light.ttf');
-  font-weight: 300;
+  font-family: 'Manrope';
+  src: url('./assets/fonts/Manrope/Manrope-Bold.ttf');
+  font-weight: bold;
 }
 
 @font-face {
@@ -62,7 +58,12 @@ body {
 
 @font-face {
   font-family: 'Oswald';
+  src: url('./assets//fonts//Oswald/Oswald-Light.ttf');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Oswald';
   src: url('./assets/fonts/Oswald/Oswald-Regular.ttf');
   font-weight: 400;
 }
-

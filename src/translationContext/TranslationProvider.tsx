@@ -7,19 +7,18 @@ import { TranslationData } from '../types/TranslationData';
 
 type Props = {
   children: React.ReactNode;
-}
+};
 
 const TranslationProvider: React.FC<Props> = ({ children }) => {
   const [currentLanguage, setCurrentLanguage] = useState<Language>(() => {
     const savedLang = localStorage.getItem('lang');
-    return savedLang as Language || 'en';
+    return (savedLang as Language) || 'en';
   });
 
   const changeLanguage = (language: Language) => {
     localStorage.setItem('lang', language);
     setCurrentLanguage(language);
   };
-
 
   const getTranslation = (key: keyof TranslationData[Language]) => {
     return translations[currentLanguage][key] || '';
@@ -39,4 +38,3 @@ const TranslationProvider: React.FC<Props> = ({ children }) => {
 };
 
 export default TranslationProvider;
-

@@ -4,16 +4,17 @@ import { FormErrors } from '../types/FormError';
 import { TranslationContextType } from '../types/TranslationContextType';
 
 export const useValidation = () => {
-  const { getTranslation } = useContext(TranslationContext) as TranslationContextType;
+  const { getTranslation } = useContext(
+    TranslationContext
+  ) as TranslationContextType;
 
   const validateField = (fieldName: keyof FormErrors, value: string) => {
-
     let errorMessage: string | null = null;
 
     if (!value) {
       errorMessage = null;
     } else {
-      switch(fieldName) {
+      switch (fieldName) {
       case 'fullname':
         if (!/^[A-Za-zА-Яа-яІіЇїЄєҐґ ]+$/.test(value)) {
           errorMessage = getTranslation('fullNameError');

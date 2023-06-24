@@ -22,4 +22,3 @@ export const theme = createTheme({
     fontFamily: 'Manrope, Oswald, KyivTypeSans, sans-serif',
   },
 });
-
